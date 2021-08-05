@@ -43,13 +43,21 @@ public class Hands {
                 .sum();
     }
 
-    public int countAceCards() {
+    private int countAceCards() {
         return (int) hands.stream()
                 .filter(AceCard.class::isInstance)
                 .count();
     }
 
-    public int countMajorCards() {
+    public boolean containsOneAceCard() {
+        return countAceCards() == 1;
+    }
+
+    public boolean containsOneMajorCard() {
+        return countMajorCards() == 1;
+    }
+
+    private int countMajorCards() {
         return (int) hands.stream()
                 .filter(Card::majorCard)
                 .count();
